@@ -10,7 +10,7 @@ class FileStorage:
 
     def all(self, cls=None):
         """Returns a dictionary of models currently in storage"""
-        if (cls == None):
+        if (not cls):
             return FileStorage.__objects
         else:
             temp = {}
@@ -25,7 +25,8 @@ class FileStorage:
         self.all().update({obj.to_dict()['__class__'] + '.' + obj.id: obj})
 
     def delete(self, obj=None):
-        if (obj == None):
+        """Deletes a given object"""
+        if (not obj):
             return
         self.all().pop(obj.to_dict()['__class__'] + '.' + obj.id)
 
