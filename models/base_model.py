@@ -42,12 +42,3 @@ class BaseModel:
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
         return dictionary
-    '''
-    def xd(self):
-        from models import storage
-        temp = {}
-        for obj, value in storage.all().items():
-            if (obj.split(".")[0] == "BaseModel"):
-                temp.update({obj: value})
-        print(temp)
-    '''

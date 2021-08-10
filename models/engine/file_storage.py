@@ -17,7 +17,6 @@ class FileStorage:
             for obj, value in FileStorage.__objects.items():
                 if (obj.split(".")[0] == cls.__name__):
                     temp.update({obj: value})
-            print("================================")
             return temp
 
     def new(self, obj):
