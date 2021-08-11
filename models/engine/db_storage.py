@@ -38,8 +38,7 @@ class DBStorage():
         if (cls):
             classes = [cls]
         else:
-            # Falta Amenity
-            classes = [State, City, User, Place, Review]
+            classes = [State, City, User, Place, Review, Amenity]
         dic = {}
         for clas in classes:
             for row in self.__session.query(clas).all():
