@@ -13,6 +13,7 @@ from models.amenity import Amenity
 from models.review import Review
 from sqlalchemy.orm import scoped_session
 
+
 class DBStorage():
     """Class DBStorage to run a database"""
     __engine = None
@@ -37,12 +38,12 @@ class DBStorage():
         if (cls):
             classes = [cls]
         else:
-            # Falta Amenity, Place, Review
-            classes = [State, City, User]
+            # Falta Amenity, Review
+            classes = [State, City, User, Place]
         dic = {}
         for clas in classes:
             for row in self.__session.query(clas).all():
-                dic.update({row.to_dict()['__class__'] + "." + row.id : row})
+                dic.update({row.to_dict()['__class__'] + "." + row.id: row})
 
         return (dic)
 
