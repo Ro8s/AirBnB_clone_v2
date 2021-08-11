@@ -29,17 +29,11 @@ class Test_Console(unittest.TestCase):
         self.consola = HBNBCommand()
         with patch('sys.stdout', new=StringIO()) as out:
             self.consola.onecmd("create")
-            self.assertEqual("** class name missing **\n", out.getvalue())
+        self.assertEqual("** class name missing **\n", out.getvalue())
 
     def test_create_not_a_class(self):
         """create test w/ non existing class"""
         self.consola = HBNBCommand()
         with patch('sys.stdout', new=StringIO()) as out:
             self.consola.onecmd("create Danitkm")
-            self.assertEqual("** class doesn't exist **\n", out.getvalue())
-
-    #def test_create_BaseModel(self):
-     #   """ creating BaseModel """
-      #  self.consola = HBNBCommand()
-       # with patch('sys.stdout', new=StringIO()) as out:
-        #    self.consola.onecmd("create BaseModel")
+        self.assertEqual("** class doesn't exist **\n", out.getvalue())
