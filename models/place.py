@@ -28,7 +28,7 @@ class Place(BaseModel, Base):
                                cascade="all, delete-orphan")
     else:
         @property
-        def reviews:
+        def reviews(self):
             from models import storage
             from models.review import Review
             my_place = {}

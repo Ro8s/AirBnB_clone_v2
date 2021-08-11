@@ -3,13 +3,11 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
 from sqlalchemy import Column, Integer, String, Float, ForeignKey
-from models.city import City
-from models.state import State
 from models.user import User
 from models.place import Place
 
 
-class Review(BaseModel):
+class Review(BaseModel, Base):
     """ Review classto store review information """
     __tablename__ = 'reviews'
     place_id = Column(String(60), ForeignKey(Place.id), nullable=False)
