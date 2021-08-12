@@ -17,13 +17,13 @@ import pep8
 
 class Test_Console(unittest.TestCase):
     '''Unittest for ex 2'''
-    
+
     def test_pep8_console(self):
         """test pep8 style"""
         s = pep8.StyleGuide(quiet=True)
         pep = s.check_files(['console.py'])
         self.assertEqual(pep.total_errors, 0, 'Found errors.')
-    
+
     def test_create_no_class(self):
         """create test w/o class"""
         self.consola = HBNBCommand()
