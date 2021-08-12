@@ -1,29 +1,30 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+"""Unittest for review"""
+import models
+import unittest
+from models.base_model import BaseModel
+from datetime import datetime
 from models.review import Review
+import pep8
 
 
-class test_review(test_basemodel):
-    """ """
+class test_review(unittest.TestCase):
+    """Test review"""
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "Review"
-        self.value = Review
+    def test_pep8_console(self):
+        '''test pep8 style'''
+        s = pep8.StyleGuide(quiet=True)
+        pep = s.check_files(['models/review.py'])
+        self.assertEqual(pep.total_errors, 0, 'Found errors.')
 
-    def test_place_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.place_id), str)
+    def test_datatype(self):
+        '''data type of review attributes'''
+        r = Review(text="Volveatupaisquenosacaseltrabajoanosotors",
+                   place_id="Rrrrum", user_id="Fium")
+        self.assertEqual(str, type(r.text))
+        self.assertEqual(str, type(r.place_id))
+        self.assertEqual(str, type(r.user_id))
+        self.assertEqual(r.__tablename__, 'reviews')
 
-    def test_user_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.user_id), str)
-
-    def test_text(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.text), str)
+if __name__ == '__main__':
+    unittest.main()

@@ -20,7 +20,7 @@ class TestState(unittest.TestCase):
         '''Test for State'''
         s = State(name='GuidoWazka')
         self.assertEqual(str, type(s.name))
-
+        self.assertEqual(s.__tablename__, 'states')
 
 if __name__ == '__main__':
     unittest.main()
