@@ -1,24 +1,28 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+''' Unittest for City '''
+
+import models
+import unittest
+from models.base_model import BaseModel
+from datetime import datetime
 from models.city import City
+import pep8
 
 
-class test_City(test_basemodel):
-    """ """
+class TestCity(unittest.TestCase):
+    ''' Test for City '''
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "City"
-        self.value = City
+    def test_city(self):
+        '''  Test for City '''
+        c = City(state_id="a", name="b")
+        self.assertEqual(str, type(c.state_id))
+        self.assertEqual(str, type(c.name))
 
-    def test_state_id(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.state_id), str)
+    def test_pep8_console(self):
+        """test pep8 style"""
+        s = pep8.StyleGuide(quiet=True)
+        pep = s.check_files(['models/city.py'])
+        self.assertEqual(pep.total_errors, 0, 'Found errors.')
 
-    def test_name(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+if __name__ == '__main__':
+    unittest.main()
