@@ -1,19 +1,26 @@
 #!/usr/bin/python3
-""" """
-from tests.test_models.test_base_model import test_basemodel
+'''Unittest state'''
+import models
+import unittest
+from models.base_model import BaseModel
+from datetime import datetime
 from models.state import State
+import pep8
 
 
-class test_state(test_basemodel):
-    """ """
+class TestState(unittest.TestCase):
+    ''' Test for State'''
+    def test_pep8_console(self):
+        '''test pep8 style'''
+        s = pep8.StyleGuide(quiet=True)
+        pep = s.check_files(['models/state.py'])
+        self.assertEqual(pep.total_errors, 0, 'Found errors.')
 
-    def __init__(self, *args, **kwargs):
-        """ """
-        super().__init__(*args, **kwargs)
-        self.name = "State"
-        self.value = State
+    def test_user(self):
+        '''Test for State'''
+        s = State(name='GuidoWazka')
+        self.assertEqual(str, type(s.name))
 
-    def test_name3(self):
-        """ """
-        new = self.value()
-        self.assertEqual(type(new.name), str)
+
+if __name__ == '__main__':
+    unittest.main()
