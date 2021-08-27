@@ -3,10 +3,17 @@
 sudo apt-get update -y
 sudo apt-get install nginx -y
 mkdir -p /data/web_static/releases/test/
-printf %s "xD
+mkdir -p /data/web_static/shared/
+printf %s "
+<html>
+  <head>
+  </head>
+  <body>
+    Holberton School
+  </body>
+</html>
 " > /data/web_static/releases/test/index.html
-ln -sfn /data/web_static/releases/test/ /data/web_static/current
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
-sed -i '/server_name _;/a \        location /hbnb_static {\n' /etc/nginx/sites-available/default
-sed -i '/hbnb_static {/a \                alias /data/web_static/current/;\n}' /etc/nginx/sites-available/default
+sed -i '/listen 80/a location /hbnb_static { alias /data/web_static/current/;}' /etc/nginx/sites-available/default
 sudo service nginx restart
