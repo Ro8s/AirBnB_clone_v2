@@ -31,7 +31,7 @@ def pitonxd(text='is cool'):
 def num(n):
     if n.isdigit():
         return '{} is number'.format(n)
-    elif s.startswith('-') and s[1:].isdigit():
+    elif n.startswith('-') and n[1:].isdigit():
         return '{} is number'.format(n)
 
 
