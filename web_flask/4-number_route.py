@@ -29,7 +29,7 @@ def pitonxd(text='is cool'):
 
 @app.route('/number/<int:n>', strict_slashes=False)
 def num(n):
-    if type(n):
+    if type(n) is int:
         return '{} is number'.format(n)
 
 
