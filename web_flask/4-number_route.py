@@ -29,10 +29,13 @@ def pitonxd(text='is cool'):
 
 @app.route('/number/<n>', strict_slashes=False)
 def num(n):
-    if n.isdigit():
-        return '{} is number'.format(n)
-    elif n.startswith('-') and n[1:].isdigit():
-        return '{} is number'.format(n)
+    try:
+        if n.isdigit():
+            return '{} is number'.format(n)
+        elif n.startswith('-') and n[1:].isdigit():
+            return '{} is number'.format(n)
+    except:
+        pass
 
 
 if __name__ == '__main__':
