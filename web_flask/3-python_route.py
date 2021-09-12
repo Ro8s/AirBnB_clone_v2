@@ -20,13 +20,11 @@ def isC(text):
     return 'C {}'.format(t)
 
 
+@app.route('/python', strict_slashes=False)
 @app.route('/python/<text>', strict_slashes=False)
-def python(text):
-    if text != "":
-        t = text.replace("_", " ")
-        return 'Python {}'.format(t)
-    else:
-        return 'Python is cool'
+def pitonxd(text='is cool'):
+    t = text.replace("_", " ")
+    return 'Python {}'.format(t)
 
 
 if __name__ == '__main__':
