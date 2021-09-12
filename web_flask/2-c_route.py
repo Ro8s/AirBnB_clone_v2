@@ -16,8 +16,8 @@ def hbnb():
 
 @app.route('/c/<text>', strict_slashes=False)
 def isC(text):
-    text.replace("_", " ")
-    return 'C {}'.format(text)
+    t = text.replace("_", " ")
+    return 'C {}'.format(t)
 
 
 if __name__ == '__main__':
