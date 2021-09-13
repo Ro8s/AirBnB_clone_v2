@@ -2,7 +2,7 @@
 """Data base storage"""
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import create_engine, MetaData
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, scoped_session
 from os import getenv
 from models.base_model import Base, BaseModel
 from models.user import User
@@ -66,3 +66,7 @@ class DBStorage():
         self.__session = sessionmaker(self.__engine, expire_on_commit=False)
         Session = scoped_session(self.__session)
         self.__session = Session()
+
+    def close(self):
+        """ close method """
+        self.__session.close()
